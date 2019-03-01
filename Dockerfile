@@ -6,7 +6,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 # General
 RUN apt-get update
-RUN apt-get install -y wget, tabix, locales, bc
+RUN apt-get install -y wget, tabix, locales, bc, jq
 RUN apt install -y git
 RUN apt install -y zlib1g-dev
 RUN locale-gen en_US.UTF-8
@@ -15,6 +15,9 @@ RUN locale-gen en_US.UTF-8
 RUN wget https://github.com/lh3/minimap2/releases/download/v2.15/minimap2-2.15_x64-linux.tar.bz2
 RUN tar -xjvf minimap2-2.15_x64-linux.tar.bz2 
 RUN mv minimap2-2.15_x64-linux/minimap2 /usr/bin/
+
+# Hisat 2
+apt install -y hisat2=2.1.0-1
 
 # vg
 RUN wget https://github.com/vgteam/vg/releases/download/v1.14.0/vg
@@ -36,6 +39,8 @@ RUN pip3 install rough_graph_mapper==0.0.3
 
 
 # Install R
+# r package dependencies:
+RUN apt install -y libcurl4-openssl-dev, libxml2-dev
 RUN apt install -y  apt-transport-https software-properties-common
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
 RUN add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/'
