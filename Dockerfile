@@ -22,8 +22,7 @@ RUN pip3 install numpy
 
 # Python packages
 RUN pip3 install offsetbasedgraph==2.1.4
-RUN pip3 install rough_graph_mapper==0.0.3
-RUN pip3 install git+https://github.com/uio-bmi/graph_minimap.git@v1.0.0
+RUN pip3 install rough_graph_mapper==0.0.4
 
 # Two step Graph Mapper
 RUN git clone https://github.com/uio-bmi/two_step_graph_mapper.git && cd two_step_graph_mapper && pip3 install -e .
@@ -37,7 +36,7 @@ RUN mv minimap2-2.15_x64-linux/minimap2 /usr/bin/
 RUN apt-get update && apt install -y hisat2=2.1.0-1
 
 # vg
-RUN wget https://github.com/vgteam/vg/releases/download/v1.14.0/vg
+RUN wget https://github.com/vgteam/vg/releases/download/v1.12.1/vg
 RUN chmod a+x vg && mv vg /usr/bin/
 
 # bwa mem
